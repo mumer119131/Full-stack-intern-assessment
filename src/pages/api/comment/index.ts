@@ -12,7 +12,7 @@ export default async function handle(
         where: { email: commentUserEmail },
     });
     if (user === null) {
-        return res.status(400).json({ message: "User not found" });
+        return res.status(400).json({ message: `User not found SignUp for ${commentUserEmail} first` });
     }
     const result = await prisma.comment.create({
         data: {

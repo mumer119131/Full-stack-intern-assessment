@@ -37,7 +37,8 @@ export default function PostDetails({ title, author, content, published, id, com
     }
   }
 
-  async function addCommentToPost() {
+  async function addCommentToPost(e : React.SyntheticEvent) {
+    e.preventDefault()
     setError('')
     const response = await fetch(`/api/comment/`, {
       method: 'POST',
@@ -81,9 +82,11 @@ export default function PostDetails({ title, author, content, published, id, com
       <h2>
         Comments
       </h2>
-      <input type="text" className={styles.custom__input} value={comment} onChange={(e)=> setComment(e.target.value)} placeholder="Comment"/>
-      <input type="text" className={styles.custom__input} value={commentUserEmail} onChange={(e)=> setCommentUserEmail(e.target.value)} placeholder="Enter Your Email"/>
-      <button className={styles.button} disabled={!comment || !commentUserEmail}  onClick={addCommentToPost}>Add Comment</button>
+      <form onSubmit={(e)=> addCommentToPost(e)}>
+        <input type="text" className={styles.custom__input} value={comment} onChange={(e)=> setComment(e.target.value)} placeholder="Comment"/>
+        <input type="email" className={styles.custom__input} value={commentUserEmail} onChange={(e)=> setCommentUserEmail(e.target.value)} placeholder="Enter Your Email"/>
+        <button className={styles.button} disabled={!comment || !commentUserEmail}  type='submit'>Add Comment</button>
+      </form>
       <p className={styles.error}>{error}</p>
       {
         comments.map((comment: CommentProps) => (
