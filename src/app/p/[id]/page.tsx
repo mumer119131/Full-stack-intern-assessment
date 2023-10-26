@@ -1,3 +1,5 @@
+
+
 import React from 'react'
 import { notFound, } from 'next/navigation'
 import prisma from '../../../lib/prisma'
@@ -11,9 +13,9 @@ export default async function Post({ params }: { params: { id: string } }) {
   )
   const post = await prisma.post.findUnique({
     where: { id },
-    include: { author: true },
+    include: { author: true, comments: { include: {author : true}, orderBy : { createdAt : 'desc' } } },
   })
-
+  
   if (!post) notFound()
 
   return (

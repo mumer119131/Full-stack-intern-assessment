@@ -8,3 +8,52 @@
 .button + .button {
   margin-left: 1rem;
 }
+
+.comment__container{
+  background: linear-gradient(90deg, #d0f5d6 0%, #d9e7ff 100%);
+  display: flex;
+  padding: 2rem 0.5rem;
+  margin-top: 1rem;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 18px;
+  margin-bottom: 1rem;
+}
+.comment__container div img{
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+.comment__container div p{
+  margin: 0.5rem 0 0;
+}
+.comment__container div h3{
+  margin: 0;
+}
+.comment__container .btn__container{
+  margin-left: auto;
+  margin-right: 1rem;
+}
+.comment__container button{
+  background-color: rgb(180, 9, 9);
+  border-radius: 8px;
+  color: white;
+}
+
+.custom__input{
+  border: none !important;
+  padding: 1rem .5rem !important;
+  border-radius: 16px !important;
+  max-width: 25rem;
+  display: block;
+}
+.custom__input::placeholder{
+  color: #a8a8a8 !important;
+  font-weight: 500 !important;
+}
+.custom__input:focus{
+  outline: none !important;
+}
+.error{
+  color: red;
+}
